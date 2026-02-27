@@ -1,6 +1,5 @@
 \documentclass[11pt]{article}
 
-
 \setlength{\parindent}{0pt}
 \usepackage{xltxtra}
 \usepackage{hyperref}
@@ -18,7 +17,6 @@
 \usepackage{enumitem}
 \CJKsetecglue{} %% 取消中文与数字之间的间隙
 
-
 %% 主文档字体设置
 \setmainfont[
     Path = fonts/Main/,
@@ -32,7 +30,6 @@
     Extension = .ttf,
     BoldFont = NotoSansSC-Bold.ttf, % 加粗字体
 ]{NotoSansSC-Regular.otf} % 正文字体
-
 
 \usepackage{relsize}
 \usepackage{xspace}
@@ -75,7 +72,6 @@
 
 % =======================================================================
 
-
 \titleformat{\section}         % 定制 \section 命令 
 {\large\bfseries\raggedright} % 将 section 标题设置为大号、粗体且左对齐
 {}{0em}                      % 可用于为所有 section 添加前缀（如“章节...”）
@@ -83,73 +79,71 @@
 [{\color{CVBlue}\titlerule}]  % 在标题后插入一条横线
 \titlespacing*{\section}{0cm}{*1.6}{*1.2}
 
-
-
 \begin{document}
 \pagenumbering{gobble}
 
-%%%% 利用tikz来定位照片
+%%%% 利用tikz来定位照片（注释掉，因为无照片）
+% \begin{tikzpicture}[remember picture, overlay] 
+%     \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
+% \end{tikzpicture}%
+%%%% 利用tikz来定位学校Logo（保留并调整大小）
 \begin{tikzpicture}[remember picture, overlay] 
-    \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
-  \end{tikzpicture}%
-  %%%% 利用tikz来定位学校Logo，这里只在第一页显示
-  \begin{tikzpicture}[remember picture, overlay] 
-    \node[anchor = north west] at ($(current page.north west)+(0.5cm,+1.0cm)$) {\includegraphics[height=6cm]{zju.png}};
-  \end{tikzpicture}%
-\centerline{\LARGE\bfseries{胡豆}} 
+    \node[anchor = north west] at ($(current page.north west)+(0.5cm,0.5cm)$) {\includegraphics[height=2.2cm]{zju.png}};
+\end{tikzpicture}%
 
-\centerline{\normalsize{\faPhone\ 111-1111-1111 \quad \faEnvelopeO\ \href{mailto:3230100000@zju.edu.cn}{3230100000@zju.edu.cn}}} 
+\centerline{\LARGE\bfseries{谢家航}} 
 
-\centerline{\normalsize{\faGithubSquare\ \href{https://github.com/maksymilan}{https://github.com/maksymilan} \quad \faRssSquare\ \href{https://maksymilan.github.io/}{https://maksymilan.github.io}}} 
+\centerline{\normalsize{\faPhone\ 13615872286 \quad \faEnvelopeO\ \href{mailto:892229840@qq.com}{892229840@qq.com}}} 
+
+% 去除github与个人博客行（原简历未提供）
     
 \section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景}    
-\textbf{浙江大学} \hfill 2023.9 -- 至今\\[0.5em] % 标题和正文间加一点距离
-CC98烂坑挖掘工程与技术\quad 大二 
+\textbf{浙江大学} \hfill 2022.9 -- 至今\\[0.5em]
+\textbf{统计学} 专业 \quad 本科
 \begin{itemize}[nosep]
-    \item 相关课程：《烂坑挖掘及基础》、《高级挖坑技巧》、《烂坑数理统计》
+    \item \textbf{GPA:} 3.65/4.3 (82.59/100)
+    \item \textbf{主修课程:} 概率论、数理统计、随机过程、数学软件、时间序列分析、多元统计分析等
 \end{itemize}
 
 \section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 项目经历}
 
-% --- 第一个项目 ---
-% 将标题行末尾的 \\ 替换为 \titlebreak 命令
-\textbf{98烂坑风控与可视化作战平台} \hfill 2024.08 -- 至今 \titlebreak
-项目描述：为维护cc98社区的讨论纯度、净化“心灵之约”版块风气，本项目旨在对“烂坑”进行科学、严谨的量化分析，并引入\textbf{大语言模型(LLM)}对烂坑帖进行\textbf{自动化情感极性与“离谱指数”标注}。
-% 在 itemize 的选项中，使用 topsep=\intraProjectListTopSep 来控制上边距
+% --- 第一个项目：基因测序数据分析 ---
+\textbf{基因测序数据分析（Lasso \& 弹性网络）} \hfill 2023.10 -- 2024.01 \titlebreak
+在10,000+维基因表达数据中，采用正则化方法筛选疾病相关基因并验证模型稳定性。
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{数据与后端}：运用 \textbf{Go} 语言及 \textbf{GORM} 框架，实现对全站“烂坑”帖的7x24小时全天候\textbf{抓取}与\textbf{入库}(MySQL)。
-    \item \textbf{可视化前端}：采用原生 \textbf{HTML/CSS/JS} 构建了“烂坑”实时监控\textbf{作战大屏}。实现了坑主成分分析、挖坑热力图、年度烂坑王榜单等\textbf{可视化图表}，并通过 \textbf{AJAX} 异步刷新，确保数据洞察的实时性。
-    \item \textbf{核心产出}：全面掌握了从\textbf{数据采集、清洗、LLM标注到可视化分析}的“反烂坑”全链路技术。
+    \item 针对高维基因表达数据，采用\textbf{Lasso回归}和弹性网络（$\alpha = 0.5$）进行变量选择，筛选出5个与靶标疾病显著相关的基因（FDR $<0.01$）。
+    \item 通过\textbf{主成分分析}（PCA）与\textbf{交叉验证}检验模型的稳定性与泛化能力，确保筛选结果的可靠性。
+    \item 利用R语言实现数据预处理、建模及可视化，积累了处理生物统计高维数据的实战经验。
 \end{itemize}
 
-% 使用 \projectsep 命令来分隔两个项目
 \projectsep
 
-% --- 第二个项目 ---
-\textbf{AIGC驱动的超进化自动挖坑机 (Agent)} \hfill 2025.02 -- 至今 \titlebreak
-项目描述：为探索心灵版规的边界，以及测试版主锁沉反应速度的极限，本项目基于\textbf{多智能体协作(MCP)与LLM}技术，开发了一款能\textbf{自主“挖坑”与“互坑”}的AI Agent。
+% --- 第二个项目：金融风控研究 ---
+\textbf{金融风控：贝叶斯网络与违约预测优化} \hfill 2024.02 -- 2024.05 \titlebreak
+构建贝叶斯网络模型揭示信用变量间的依赖关系，提升违约预测性能。
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{并发与调度}：后端采用 \textbf{Go} 语言，充分利用 \textbf{Goroutine} 和 \textbf{Channel} 的高并发模型，模拟\textbf{用户并发在线}，执行定时挖坑，确保挖坑行动的\textbf{隐蔽性}与\textbf{高效性}。
-    \item \textbf{实时监控与响应}：运用 \textbf{WebSocket} 协议实现了对目标帖子的\textbf{实时监听与交互}。确保在烂坑被识破的第一时间，Agent能光速完成\textbf{“lktp”}或\textbf{反向钓鱼}操作，展现出极高的AI博弈能力。
-    \item \textbf{可视化GUI}：前端使用 \textbf{React} 框架构建了\textbf{后台管理的可视化面板 (Admin Panel)}。可一键下达挖坑指令、动态调整Agent的\textbf{指令}、并实时监控数据。
+    \item 构建\textbf{贝叶斯网络}模型捕捉风险变量间的概率依赖结构，结合\textbf{MCMC}算法进行参数后验估计，增强模型可解释性。
+    \item 通过引入概率图模型，将违约预测的\textbf{F1值从0.78提升至0.87}，显著改善了风控模型的精准率与召回率。
+    \item 使用Python进行模型实现与评估，包括网络结构学习、参数估计及性能对比。
 \end{itemize}
 
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 技术栈}
 \begin{itemize}[nosep]
-    \item \textbf{编程语言：} \textbf{Go}, Python, C++
-    \item \textbf{开发工具：} SSH, Git, Vim, MakeFile,LaTex
-    \item \textbf{操作系统：} Linux
+    \item \textbf{编程语言：} Python, R, (基础: C++/Java)
+    \item \textbf{统计与建模：} 概率论与数理统计，多元统计分析，时间序列分析，贝叶斯网络，Lasso回归，PCA
+    \item \textbf{工具与平台：} Git, RStudio, Jupyter, LaTeX, Linux
 \end{itemize}
-\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faList}\ 获奖情况}
-\begin{itemize}
-    \item CC98年度用户 \hfill 2023.12
+
+% 原简历无获奖经历，故省略该section
+% \section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faList}\ 获奖情况}
+% \begin{itemize}
+%     \item 待补充
+% \end{itemize}
     
-\end{itemize}
-    
-\section{\makebox[\widthof{\faInfo}][c]{\color{CVBlue}\faInfo}\ 其他}
+\section{\makebox[\widthof{\faInfo}][c]{\color{CVBlue}\faInfo}\ 其他信息}
 \begin{itemize}[parsep=0.5ex]
-    \item \textbf{技术博客：} \href{https://maksymilan.github.io/}{https://maksymilan.github.io/}
-    \item \textbf{GitHub：} \href{https://github.com/maksymilan}{https://github.com/maksymilan} 
-    \item \textbf{英语水平：} CET-4, CET-6
+    \item \textbf{英语水平：} 英语六级（CET-6），具备良好的书面与口语沟通能力。
+    \item \textbf{自我评价：} 具备扎实的统计专业基础和较强的自主学习能力；有良好的抗压能力和团队协作精神；善于沟通，学术表达清晰；对数据科学在实际问题中的应用充满热情。
 \end{itemize}
+
 \end{document}
